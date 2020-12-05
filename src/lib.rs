@@ -150,12 +150,12 @@ impl GlutinWindow {
             events: VecDeque::new(),
         })
     }
-    
+
     /// Creates a game window from a pre-existing Glutin event loop and window builder.
     pub fn from_raw(settings: &WindowSettings, event_loop: glutin::event_loop::EventLoop<UserEvent>, window_builder: glutin::window::WindowBuilder) -> Result<Self, Box<dyn Error>> {
         let title = settings.get_title();
         let exit_on_esc = settings.get_exit_on_esc();
-        
+
         let context_builder = context_builder_from_settings(&settings)?;
         let ctx = context_builder.build_windowed(window_builder, &event_loop)?;
         let ctx = unsafe { ctx.make_current().map_err(|(_, err)| err)? };
@@ -562,7 +562,7 @@ impl OpenGLWindow for GlutinWindow {
     fn make_current(&mut self) {
         use std::mem::{replace, forget};
 
-        let ctx = replace(&mut self.ctx, unsafe { MaybeUninit::<glutin::ContextWrapper<glutin::PossiblyCurrent, glutin::Window>>::zeroed().assume_init() });
+        let ctx = replace(&mut self.ctx, unsafe { MaybeUninit::<glutin::ContextWrapper<glutin::PossiblyCurrent, glutin::window::Window>>::zeroed().assume_init() });
         forget(replace(&mut self.ctx, unsafe {ctx.make_current().unwrap()}));
     }
 }
