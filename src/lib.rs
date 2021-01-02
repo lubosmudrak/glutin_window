@@ -11,7 +11,7 @@ extern crate shader_version;
 use std::collections::VecDeque;
 use std::error::Error;
 
-// External cratess.
+// External crates.
 use input::{
     keyboard,
     ButtonArgs,
@@ -37,7 +37,7 @@ use window::{
     UnsupportedGraphicsApiError,
 };
 use glutin::GlRequest;
-use glutin::platform::desktop::EventLoopExtDesktop;
+use glutin::platform::run_return::EventLoopExtRunReturn;
 use std::time::Duration;
 use std::thread;
 
