@@ -11,7 +11,7 @@ extern crate shader_version;
 use std::collections::VecDeque;
 use std::error::Error;
 
-// External crates.
+// External cratess.
 use input::{
     keyboard,
     ButtonArgs,
